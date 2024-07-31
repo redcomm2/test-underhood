@@ -1,0 +1,17 @@
+{
+    "name": "anton/test-work",
+    "autoload": {
+        "psr-4": {
+            "Anton\\TestWork\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "a.pleshakov",
+            "email": "ap@crosspay.net"
+        }
+    ],
+    "require": {
+        "php-webdriver/webdriver": "^1.15"
+    }
+}
