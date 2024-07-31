@@ -23,19 +23,8 @@ $inputElement->sendKeys($searchTerm);
 $searchElement = $driver->findElement(WebDriverBy::id('qa-search-submit'));
 $searchElement->click();
 
-$timeout = 10;
-$startTime = time();
-while (true) {
-    try {
-        $table = $driver->findElement(WebDriverBy::id('resultsTable'));
-        break;
-    } catch (NoSuchElementException $e) {
-        if (time() - $startTime > $timeout) {
-            die('Timed out waiting for results table');
-        }
-        sleep(1);
-    }
-}
+
+$table = $driver->findElement(WebDriverBy::id('resultsTable'));
 
 $jsonArray = [];
 
@@ -102,6 +91,7 @@ do {
 
 } while (true);
 
+echo 'Total results: ' . count($jsonArray) . PHP_EOL;
 echo json_encode($jsonArray, JSON_PRETTY_PRINT) . PHP_EOL;
 
 $driver->quit();
